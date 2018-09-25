@@ -8,19 +8,19 @@
     "pub": "npm run pretransfer && npm run transfer && cp package.json pub && cd pub && npm publish && cd .. && rm -rf pub .babelrc"
   },
   "keywords": [
-    "rj",
-    "rj-lib",
+    "fay",
+    "fay-react-lib",
     "frontend"
   ],
   "contributors": [
-    "rj"
+    "love-fay"
   ],
   "bugs": {
-    "url": "http://205.0.0.19/pikachu/rj-lib/issues"
+    "url": "https://github.com/love-fay/fay-react-lib/issues"
   },
   "repository": {
     "type": "git",
-    "url": "http://205.0.0.19/pikachu/rj-lib"
+    "url": "https://github.com/love-fay/fay-react-lib"
   },
   "main": "pub/",
   "module": "*",
