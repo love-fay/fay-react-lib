@@ -1,0 +1,205 @@
+[
+  {
+    "main": "访",
+    "type": "fang",
+    "src": "assets/images/shortcut/fang.png",
+    "children": [
+      {
+        "name": "信访登记",
+        "type": "xfdj",
+        "show": true,
+        "modalWidth": 800
+      },{
+        "name": "信访分流",
+        "type": "xffl",
+        "show": true
+      },{
+        "name": "信访化解",
+        "type": "xfhj",
+        "show": true
+      },{
+        "name": "信访转处",
+        "type": "xfzc",
+        "show": true
+      },{
+        "name": "视频接访",
+        "type": "spjf",
+        "show": true
+      }
+    ]
+  },{
+    "main": "立",
+     "type": "li",
+    "src": "assets/images/shortcut/li.png",
+    "children": [
+      {
+        "name": "收案登记",
+        "type": "sadj",
+        "show": true,
+        "url": "/case-on-file"
+      },{
+        "show": false
+      },{
+        "name": "立案审批",
+        "type": "lasp",
+        "show": true
+      },{
+        "name": "案件移送",
+        "type": "ajys",
+        "show": true
+      },{
+        "name": "当事人",
+        "type": "dsr",
+        "show": true
+      }
+    ]
+  },{
+    "main": "审",
+     "type": "shen",
+    "src": "assets/images/shortcut/shen.png",
+    "children": [
+      {
+        "name": "分案管理",
+        "type": "fagl",
+        "show": true
+      },{
+        "name": "开庭排期",
+        "type": "ktpq",
+        "show": true
+      },{
+        "name": "案件评议",
+        "type": "ahpy",
+        "show": true
+      },{
+        "name": "审限变更",
+        "type": "sxbg",
+        "show": true
+      },{
+        "name": "裁判文书",
+        "type": "cpws",
+        "show": true
+      }
+    ]
+  },{
+    "main": "结",
+    "type": "jie",
+    "src": "assets/images/shortcut/jie.png",
+    "children": [
+      {
+        "show": false
+      },{
+        "show": false
+      },{
+        "show": false
+      },{
+        "show": false
+      },{
+        "name": "移送归档",
+        "type": "ysgd",
+        "show": true
+      }
+    ]
+  },{
+    "main": "查",
+    "type": "cha",
+    "src": "assets/images/shortcut/cha.png",
+    "children": [
+      {
+        "name": "新闻",
+        "type": "xw",
+        "show": true
+      },{
+        "name": "案例",
+        "type": "al",
+        "show": true
+      },{
+        "name": "当事人",
+        "type": "dsr",
+        "show": true
+      },{
+        "name": "法官",
+        "type": "fg",
+        "show": true
+      },{
+        "name": "报表",
+        "type": "bb",
+        "show": true
+      }
+    ]
+  },{
+    "main": "管",
+    "type": "guan",
+    "src": "assets/images/shortcut/guan.png",
+    "children": [
+      {
+        "name": "案件评查",
+        "type": "ajpc",
+        "show": true
+      },{
+        "name": "质效评估",
+        "type": "zxpg",
+        "show": true
+      },{
+        "name": "司法统计",
+        "type": "sftj",
+        "show": true
+      },{
+        "name": "审判动态",
+        "type": "spdt",
+        "show": true
+      },{
+        "name": "数据修改",
+        "type": "sjxg",
+        "show": true
+      }
+    ]
+  },{
+    "main": "监",
+    "type": "jian",
+    "src": "assets/images/shortcut/jian.png",
+    "children": [
+      {
+        "name": "信访案件",
+        "type": "xfaj",
+        "show": true
+      },{
+        "name": "12368短信",
+        "type": "dx",
+        "show": true
+      },{
+        "show": false
+      },{
+        "show": false
+      },{
+        "show": false
+      }
+    ]
+  },{
+    "main": "维",
+    "type": "wei",
+    "src": "assets/images/shortcut/wei.png",
+    "children": [
+      {
+        "name": "用户管理",
+        "type": "yhgl1",
+        "show": true
+      },{
+        "name": "权限管理",
+        "type": "qxgl",
+        "show": true
+      },{
+        "name": "基础字典",
+        "type": "jczd",
+        "show": true
+      },{
+        "name": "共享交换",
+        "type": "gxjh",
+        "show": true
+      },{
+        "name": "运行监控",
+        "type": "yxjk",
+        "show": true
+      }
+    ]
+  }
+]

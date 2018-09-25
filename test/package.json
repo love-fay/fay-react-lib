@@ -1,0 +1,32 @@
+{
+  "name": "court3",
+  "version": "0.0.1-Alpha.3",
+  "description": "court3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/webpack-cli serve --config node_modules/rj-tool/config/webpack/default/webpack.config.js --color --progress",
+    "build": "node_modules/.bin/webpack-cli --config node_modules/rj-tool/config/webpack/default/webpack.pro.config.js --color --progress",
+    "pretransfer": "rm -rf pub && mkdir pub && cp node_modules/rj-tool/config/babel/.babelrc .",
+    "transfer": "node_modules/.bin/babel app --out-dir pub --copy-files",
+    "pub": "npm run pretransfer && npm run transfer && cp package.json pub && cp README.md pub && cd pub && npm publish --registry=http://205.0.0.19:7005 && cd .. && rm -rf pub .babelrc"
+  },
+  "private": false,
+  "author": "fay",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "webpack-dev-server": "^3.1.1",
+    "rj-tool": "0.0.1-Alpha.22",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "connected-react-router": "^4.3.0",
+    "classnames": "^2.2.5",
+    "history": "^4.7.2",
+    "prop-types": "^15.6.1",
+    "react-cookie": "^1.0.5",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "rjd": "0.0.44"
+  },
+  "dependencies": {}
+}
