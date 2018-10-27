@@ -1,6 +1,6 @@
 {
   "name": "fay-react-lib",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "fay-react-lib",
   "scripts": {
     "pretransfer": "rm -rf pub && mkdir pub && cp node_modules/fay-react-tool/config/babel/.babelrc .",
