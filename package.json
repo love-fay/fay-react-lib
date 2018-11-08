@@ -1,12 +1,13 @@
 {
-  "name": "fay-react-lib",
-  "version": "0.0.1-alpha.4",
-  "description": "fay-react-lib",
+  "name": "@fay-react/lib",
+  "version": "0.0.1-alpha.1",
+  "description": "fay react lib",
   "scripts": {
-    "pretransfer": "rm -rf pub && mkdir pub && cp node_modules/fay-react-tool/config/babel/.babelrc .",
+    "pretransfer": "rm -rf pub && mkdir pub && cp node_modules/@fay-react/tool/config/babel/.babelrc .",
     "transfer": "node_modules/.bin/babel lib --out-dir pub --copy-files",
-    "pub": "npm run pretransfer && npm run transfer && cp package.json pub && cd pub && npm publish && cd .. && rm -rf pub .babelrc"
+    "pub": "npm run pretransfer && npm run transfer && cp package.json pub && cd pub && npm publish --access public && cd .. && rm -rf pub .babelrc"
   },
+  "private": false,
   "keywords": [
     "fay",
     "fay-react-lib",
@@ -28,16 +29,16 @@
     "*"
   ],
   "email": "869770665@qq.com",
-  "author": "fay462298322",
+  "author": "fay",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.4.2"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-rc.2",
+    "@fay-react/tool": "0.0.1-alpha.2",
     "react": "16.4.2",
-    "react-dom": "16.4.2",
-    "fay-react-tool": "0.0.1-alpha.1"
+    "react-dom": "16.4.2"
   },
   "dependencies": {
     "connected-react-router": "4.4.1",
@@ -51,8 +52,7 @@
     "redux": "4.0.0",
     "redux-immutable-state-invariant": "2.1.0",
     "redux-logger": "3.0.6",
-    "redux-saga": "0.16.0",
-    "fay-react-ui": "0.0.1-alpha.1"
+    "redux-saga": "0.16.0"
   },
   "devEngines": {
     "node": "8.x || 9.x"
