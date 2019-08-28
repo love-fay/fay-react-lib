@@ -4,8 +4,7 @@
 # Usage
 `npm i @fay-react/lib`
 
-# 异步请求(fetch)
-### defaultQuery默认为true
+# fetch
 ```javascript
 import {get, put, post, remove, getJson, putJson, postJson, removeJson} from '@fay-react/lib/fetch';
 get({path, data});
