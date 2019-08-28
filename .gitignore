@@ -5,3 +5,4 @@ dist/
 /pub
 ._.DS_Store
 .DS_Store
+babel.config.js

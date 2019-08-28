@@ -1,0 +1,1 @@
+export const prefix = 'fay-react-material-ui';

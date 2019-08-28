@@ -1,11 +1,17 @@
 {
   "name": "@fay-react/lib",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.3",
   "description": "fay react lib",
   "scripts": {
-    "pretransfer": "rm -rf pub && mkdir pub && cp node_modules/@fay-react/tool/config/babel/.babelrc .",
-    "transfer": "node_modules/.bin/babel lib --out-dir pub --copy-files",
-    "pub": "npm run pretransfer && npm run transfer && cp package.json pub && cd pub && npm publish --access public && cd .. && rm -rf pub .babelrc"
+    "start": "node_modules/.bin/webpack-cli serve --config node_modules/@fay-react/tool/config/webpack/default/webpack.config.js --color --progress",
+    "build": "node_modules/.bin/webpack-cli --config node_modules/@fay-react/tool/config/webpack/default/webpack.pro.config.js --color --progress",
+    "pub:clear": "rm -rf pub babel.config.js",
+    "pub:tsc": "node_modules/.bin/tsc",
+    "pub:bc": "cp node_modules/@fay-react/tool/config/babel/pro/babel.config.js .",
+    "pub:bable": "node_modules/.bin/babel pub --out-dir pub --copy-files --source-maps",
+    "pub": "npm run pub:clear && npm run pub:tsc && npm run pub:bc && npm run pub:bable && cp package.json pub && cd pub && npm publish && cd .. && npm run pub:clear",
+    "fix:ts": "node_modules/.bin/tslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "lint:ts": "node_modules/.bin/tslint \"lib/**/*.ts\""
   },
   "private": false,
   "keywords": [
@@ -35,24 +41,37 @@
     "react": ">=16.4.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-rc.2",
-    "@fay-react/tool": "0.0.1-alpha.2",
-    "react": "16.4.2",
-    "react-dom": "16.4.2"
+    "@babel/cli": "7.5.5",
+    "@fay-react/tool": "0.0.1-alpha.11",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
-    "connected-react-router": "4.4.1",
-    "history": "4.7.2",
-    "hoist-non-react-statics": "3.0.1",
-    "prop-types": "15.6.2",
-    "react-cookie": "1.0.5",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^12.7.2",
+    "@types/react": "^16.9.2",
+    "@types/react-loadable": "^5.5.1",
+    "@types/react-redux": "^7.1.2",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux-immutable-state-invariant": "^2.1.1",
+    "@types/redux-logger": "^3.0.7",
+    "connected-react-router": "6.5.2",
+    "history": "4.9.0",
+    "hoist-non-react-statics": "3.3.0",
+    "prop-types": "15.7.2",
+    "react-cookie": "4.0.1",
     "react-loadable": "5.5.0",
-    "react-redux": "5.0.7",
-    "react-router-dom": "4.3.1",
-    "redux": "4.0.0",
+    "react-redux": "7.1.0",
+    "react-router-dom": "5.0.1",
+    "redux": "4.0.4",
     "redux-immutable-state-invariant": "2.1.0",
     "redux-logger": "3.0.6",
-    "redux-saga": "0.16.0"
+    "redux-saga": "1.0.5",
+    "typescript": "^3.5.3"
   },
   "devEngines": {
     "node": "8.x || 9.x"
