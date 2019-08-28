@@ -1,6 +1,6 @@
 {
   "name": "@fay-react/lib",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.13",
   "description": "fay react lib",
   "scripts": {
     "start": "node_modules/.bin/webpack-cli serve --config node_modules/@fay-react/tool/config/webpack/default/webpack.config.js --color --progress",
@@ -9,9 +9,10 @@
     "pub:tsc": "node_modules/.bin/tsc",
     "pub:bc": "cp node_modules/@fay-react/tool/config/babel/pro/babel.config.js .",
     "pub:bable": "node_modules/.bin/babel pub --out-dir pub --copy-files --source-maps",
-    "pub": "npm run pub:clear && npm run pub:tsc && npm run pub:bc && npm run pub:bable && cp package.json pub && cp README.md pub && cd pub && npm publish && cd .. && npm run pub:clear",
-    "fix:ts": "node_modules/.bin/tslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "lint:ts": "node_modules/.bin/tslint \"lib/**/*.ts\""
+    "pub:pre": "npm run pub:clear && npm run pub:tsc && npm run pub:bc && npm run pub:bable && cp package.json pub && cp README.md pub",
+    "pub": "npm run pub:pre && cd pub && npm publish && cd .. && npm run pub:clear",
+    "ts:fix": "node_modules/.bin/tslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "ts:lint": "node_modules/.bin/tslint \"lib/**/*.ts\""
   },
   "private": false,
   "keywords": [
@@ -42,18 +43,15 @@
   },
   "devDependencies": {
     "@babel/cli": "7.5.5",
-    "@fay-react/tool": "0.0.1-alpha.11",
+    "@fay-react/tool": "0.0.1-alpha.14",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "tslint": "^5.19.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^4.0.0",
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
-    "@types/moment": "^2.13.0",
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "@types/react-loadable": "^5.5.1",
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^4.3.4",
@@ -70,8 +68,7 @@
     "redux": "4.0.4",
     "redux-immutable-state-invariant": "2.1.0",
     "redux-logger": "3.0.6",
-    "redux-saga": "1.0.5",
-    "typescript": "^3.5.3"
+    "redux-saga": "1.0.5"
   },
   "devEngines": {
     "node": "8.x || 9.x"

@@ -42,8 +42,8 @@ import {injectAsyncStore} from './store';
 // }
 
 interface Props {
-  reducer: object,
-  sagas: object,
+  reducer: object | undefined,
+  sagas: object | undefined,
   view: React.ComponentState,
   viewProps: Readonly<{}>
 }

@@ -8,10 +8,10 @@ import {Provider} from 'react-redux';
 import initStore from './store';
 const store = initStore();
 const history = createBrowserHistory();
-import {Route} from 'react-router-dom';
+import {Route, RouteComponentProps} from 'react-router-dom';
 
 interface Props {
-	root: React.FunctionComponent
+	root: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>
 }
 
 export default ({root}: Props) => {

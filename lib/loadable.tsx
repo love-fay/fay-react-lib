@@ -5,7 +5,7 @@ import LoadableBundle from './loadableBundle';
 
 interface Props {
 	props: object,
-	loader: { view: () => Promise<{ default: React.ComponentState; }>, reducer: () => Promise<{ default: object; }>, sagas: () => Promise<{ default: object; }> }
+	loader: { view: () => Promise<{ default: React.ComponentState; }>, reducer?: () => Promise<{ default: object; }>, sagas?: () => Promise<{ default: object; }> }
 }
 
 interface State {
@@ -18,7 +18,7 @@ class LoadableMap extends React.Component<Props, State>{
 		super(props);
 		const mod = Loadable.Map({
 			loader: props.loader,
-			render(loaded:{view: {default: React.ComponentState}, reducer: {default: object}, sagas: {default: object}}, renderProps: Readonly<{}>){
+			render(loaded:{view: {default: React.ComponentState}, reducer?: {default: object}, sagas?: {default: object}}, renderProps: Readonly<{}>){
 				const {view, reducer, sagas} = loaded;
 				const _view = view && view.default;
 				const _reducer = reducer && reducer.default;

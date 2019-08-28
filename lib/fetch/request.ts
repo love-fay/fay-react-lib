@@ -70,7 +70,7 @@ export const reqPostBrace = ({method, params = {}, contentType, acceptType, auth
 
 export const promise = (url:string, options = {}, type?:string) => {
 		const req = new Request(url, options);
-		return new Promise((resolve, reject) => {
+		return new Promise<any>((resolve, reject) => {
 				fetch(req).then((res) => {
 						const status = res.status;
 						if (status === 401) {
