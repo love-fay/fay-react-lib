@@ -1,15 +1,14 @@
 {
   "name": "@fay-react/lib",
-  "version": "0.0.1-alpha.14",
+  "version": "0.0.1-alpha.15",
   "description": "fay react lib",
   "scripts": {
     "start": "node_modules/.bin/webpack-cli serve --config node_modules/@fay-react/tool/config/webpack/default/webpack.config.js --color --progress",
     "build": "node_modules/.bin/webpack-cli --config node_modules/@fay-react/tool/config/webpack/default/webpack.pro.config.js --color --progress",
-    "pub:clear": "rm -rf pub babel.config.js",
+    "pub:clear": "rm -rf pub",
     "pub:tsc": "node_modules/.bin/tsc",
-    "pub:bc": "cp node_modules/@fay-react/tool/config/babel/pro/babel.config.js .",
-    "pub:bable": "node_modules/.bin/babel pub --out-dir pub --copy-files --source-maps",
-    "pub:pre": "npm run pub:clear && npm run pub:tsc && npm run pub:bc && npm run pub:bable && cp package.json pub && cp README.md pub",
+    "pub:babel": "export NODE_ENV='production' && node_modules/.bin/babel pub --out-dir pub --copy-files --source-maps",
+    "pub:pre": "npm run pub:clear && npm run pub:tsc && npm run pub:babel && cp package.json pub && cp README.md pub",
     "pub": "npm run pub:pre && cd pub && npm publish && cd .. && npm run pub:clear",
     "ts:fix": "node_modules/.bin/tslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
     "ts:lint": "node_modules/.bin/tslint \"lib/**/*.ts\""
@@ -43,13 +42,12 @@
   },
   "devDependencies": {
     "@babel/cli": "7.5.5",
-    "@fay-react/tool": "0.0.1-alpha.14",
+    "@fay-react/tool": "0.0.1-alpha.16",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
-    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
