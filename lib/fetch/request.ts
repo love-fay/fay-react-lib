@@ -18,7 +18,7 @@ interface Header {
 
 const headers = ({contentType, acceptType='application/json', auth}: Header) => {
 	const newHeaders = new Headers();
-	contentType && newHeaders.append('Content-Type', 'application/json');
+	contentType && newHeaders.append('Content-Type', contentType);
 	newHeaders.append('Accept', acceptType);
 	auth && newHeaders.append("Authorization", '');
 	const pathname = window.location.pathname;
@@ -58,20 +58,20 @@ export const reqGetBrace = ({method, contentType, acceptType, auth=true}:ReqBrac
 		};
 };
 
-export const reqPostBrace = ({method, params = {}, contentType, acceptType, auth=true}:ReqBrace) => {
+export const reqPostBrace = ({method, params = {}, contentType='application/json', acceptType, auth=true}:ReqBrace) => {
 		return {
 				method,
 				headers: headers({contentType, acceptType, auth}),
 				mode: 'cors',
 				cache: 'default',
-				body: contentType ? typeof params === 'object' ? JSON.stringify(params) : params : params
+				body: contentType === 'application/json' ? typeof params === 'object' ? JSON.stringify(params) : params : params
 		};
 };
 
 export const promise = (url:string, options = {}, type?:string) => {
-		const req = new Request(url, options);
+		// const req = new Request(url, options);
 		return new Promise<any>((resolve, reject) => {
-				fetch(req).then((res) => {
+				fetch(url, options).then((res) => {
 						const status = res.status;
 						if (status === 401) {
 								const pathname = window.location.pathname;
