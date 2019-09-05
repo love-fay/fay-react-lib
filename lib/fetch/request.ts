@@ -75,7 +75,7 @@ export const promise = (url:string, options = {}, type?:string) => {
 						const status = res.status;
 						if (status === 401) {
 								const pathname = window.location.pathname;
-								pathname === '/login' || (window.location.pathname = '/login');
+								pathname === '/login' || (window.location.href = '/login?redirectUrl='+window.location.href);
 						}
 						resolve(type === 'json' ? res.json() : res);
 				}).catch((err) => {
