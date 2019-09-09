@@ -1,8 +1,9 @@
 {
   "extends": "@fay-react/tool/config/typescript/tsconfig.json",
   "compilerOptions": {
-    //    "outDir": "./pub",                        // 指定输出目录
-    //    "rootDir": "./src"                       // 用来控制输出目录结构 --outDir.
+    "outDir": "./pub",                        // 指定输出目录
+    "rootDir": "./lib",                       // 用来控制输出目录结构 --outDir.
+    "noEmit": false
   },
   "include": [
     "./lib/**/*"
