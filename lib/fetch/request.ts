@@ -1,14 +1,13 @@
 /**
  * Created by feichongzheng on 17/1/5.
  */
-// import {loginUser} from '../../user';
+import {loginUser} from '../user';
 
-// const authorization = ({appSn}) => {
-// 		// const user = loginUser();
-// 		const Authorization = {};
-// 		// user && (Authorization.token = user.token);
-// 		return JSON.stringify(Authorization);
-// };
+const authorization = () => {
+		const user = loginUser();
+		const Authorization = {token: user ? user.token:''};
+		return JSON.stringify(Authorization);
+};
 
 interface Header {
   contentType?: string,
@@ -20,12 +19,7 @@ const headers = ({contentType, acceptType='application/json', auth}: Header) => 
 	const newHeaders = new Headers();
 	contentType && newHeaders.append('Content-Type', contentType);
 	newHeaders.append('Accept', acceptType);
-	auth && newHeaders.append("Authorization", '');
-	const pathname = window.location.pathname;
-	if(pathname === '/login') {
-		newHeaders.append('client_id', 'fjfy');
-		newHeaders.append('client_secret', 'secret');
-	}
+	auth && newHeaders.append("Authorization", authorization());
 	return newHeaders;
 };
 
