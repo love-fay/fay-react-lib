@@ -40,16 +40,17 @@ interface ReqBrace {
   contentType?: string,
   acceptType?: string,
   auth?: boolean,
-  params?: any
+  params?: any,
+	cache?: string
 }
 
-export const reqGetBrace = ({method, contentType, acceptType, auth=true}:ReqBrace) => {
-		return {
-				method,
-				headers: headers({contentType, acceptType, auth}),
-				mode: 'cors',
-				cache: 'default'
-		};
+export const reqGetBrace = ({method, contentType, acceptType, auth=true, cache='default'}:ReqBrace) => {
+	return {
+		method,
+		headers: headers({contentType, acceptType, auth}),
+		mode: 'cors',
+		cache
+	};
 };
 
 export const reqPostBrace = ({method, params = {}, contentType='application/json', acceptType, auth=true}:ReqBrace) => {

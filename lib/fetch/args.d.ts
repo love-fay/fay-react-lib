@@ -3,5 +3,6 @@ interface Args {
   data?: object | string,
   contentType?: string,
   auth?: boolean,
-  defaultQuery?: boolean
+  defaultQuery?: boolean,
+  cache?: string
 }
