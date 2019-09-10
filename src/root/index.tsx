@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {withRouter} from 'react-router-dom';
-import './style/index.scss';
 import Home from '../home';
+import './style/index.scss';
 
-interface props{
+interface Props{
     location: {
       pathname: string
     },
 }
 
-const Root: React.FunctionComponent<props> = props => {
+const Root: React.FunctionComponent<Props> = props => {
   const {pathname} = props.location;
   const pathPrefix = pathname.split('/')[1];
   const router = {

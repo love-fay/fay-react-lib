@@ -4,11 +4,11 @@
 import { ConnectedRouter} from 'connected-react-router';
 import {createBrowserHistory} from 'history';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import initStore from './store';
-const store = initStore();
 const history = createBrowserHistory();
+import {Provider} from '@fay-react/react-redux-loadable';
 import {Route, RouteComponentProps} from 'react-router-dom';
+import reduxMiddlewares from './reduxMiddlewares';
+import routerReducer from './routerReducer';
 
 interface Props {
 	root: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>
@@ -16,7 +16,7 @@ interface Props {
 
 export default ({root}: Props) => {
 	return (
-		<Provider store={store}>
+		<Provider initReducer={routerReducer} reduxMiddlewares={reduxMiddlewares}>
 			<ConnectedRouter history={history}>
 				<Route component={root}/>
 			</ConnectedRouter>

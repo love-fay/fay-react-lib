@@ -1,6 +1,6 @@
 {
   "name": "@fay-react/lib",
-  "version": "0.0.1-alpha.21",
+  "version": "0.0.1-alpha.22",
   "description": "fay react lib",
   "scripts": {
     "start": "node_modules/.bin/webpack-cli serve --config node_modules/@fay-react/tool/config/webpack/default/webpack.config.js --color --progress",
@@ -45,29 +45,17 @@
     "@fay-react/tool": "0.0.1-alpha.19",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "prop-types": "15.7.2"
   },
   "dependencies": {
-    "@types/node": "^12.7.2",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-loadable": "^5.5.1",
-    "@types/react-redux": "^7.1.2",
+    "@fay-react/react-redux-loadable": "0.0.1-alpha.3",
     "@types/react-router-dom": "^4.3.4",
-    "@types/redux-immutable-state-invariant": "^2.1.1",
-    "@types/redux-logger": "^3.0.7",
     "connected-react-router": "6.5.2",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
-    "prop-types": "15.7.2",
     "react-cookie": "^1.0.5",
-    "react-loadable": "5.5.0",
-    "react-redux": "7.1.0",
-    "react-router-dom": "5.0.1",
-    "redux": "4.0.4",
-    "redux-immutable-state-invariant": "2.1.0",
-    "redux-logger": "3.0.6",
-    "redux-saga": "1.0.5"
+    "react-router-dom": "5.0.1"
   },
   "devEngines": {
     "node": "8.x || 9.x"
