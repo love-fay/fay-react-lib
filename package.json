@@ -1,6 +1,6 @@
 {
   "name": "@fay-react/lib",
-  "version": "0.0.1-alpha.22",
+  "version": "0.0.1-alpha.26",
   "description": "fay react lib",
   "scripts": {
     "start": "node_modules/.bin/webpack-cli serve --config node_modules/@fay-react/tool/config/webpack/default/webpack.config.js --color --progress",
@@ -38,7 +38,7 @@
   "author": "fay",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.4.2"
+    "react": ">=16.8.2"
   },
   "devDependencies": {
     "@babel/cli": "7.5.5",
@@ -49,13 +49,13 @@
     "prop-types": "15.7.2"
   },
   "dependencies": {
-    "@fay-react/react-redux-loadable": "0.0.1-alpha.3",
-    "@types/react-router-dom": "^4.3.4",
+    "@fay-react/react-redux-loadable": "0.0.1-alpha.7",
+    "@types/react-router-dom": "5.1.0",
     "connected-react-router": "6.5.2",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
     "react-cookie": "^1.0.5",
-    "react-router-dom": "5.0.1"
+    "react-router-dom": "5.1.2"
   },
   "devEngines": {
     "node": "8.x || 9.x"

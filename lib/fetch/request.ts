@@ -1,17 +1,18 @@
 /**
  * Created by feichongzheng on 17/1/5.
  */
+import {getPublicPathWithoutStartAndEndForwardSlash} from '../publicPath';
 import {loginUser} from '../user';
 
 const authorization = () => {
-		const user = loginUser();
-		const Authorization = {token: user ? user.token:''};
-		return JSON.stringify(Authorization);
+	const user = loginUser();
+	const Authorization = {token: user ? user.token:''};
+	return JSON.stringify(Authorization);
 };
 
 interface Header {
-  contentType?: string,
-  acceptType?: string,
+	contentType?: string,
+	acceptType?: string,
 	auth?: boolean
 }
 
@@ -24,57 +25,82 @@ const headers = ({contentType, acceptType='application/json', auth}: Header) => 
 };
 
 export const getQueryString = (params:any) => {
-		if(params){
-				const arr:string[] = [];
-				Object.keys(params).forEach((key: string) => {
-						arr.push(key + '=' + encodeURIComponent(params[key]));
-				});
-				return '?' + arr.join('&');
-		}else{
-				return '';
-		}
+	if(params){
+		const arr:string[] = [];
+		Object.keys(params).forEach((key: string) => {
+			arr.push(key + '=' + encodeURIComponent(params[key]));
+		});
+		return '?' + arr.join('&');
+	}else{
+		return '';
+	}
 };
 
 interface ReqBrace {
-  method: string,
-  contentType?: string,
-  acceptType?: string,
-  auth?: boolean,
-  params?: any,
+	method: string,
+	contentType?: string,
+	acceptType?: string,
+	auth?: boolean,
+	params?: any,
 	cache?: string
 }
 
-export const reqGetBrace = ({method, contentType, acceptType, auth=true, cache='default'}:ReqBrace) => {
+export const reqGetBrace = ({method, contentType, acceptType, auth=true, cache='no-cache'}:ReqBrace) => {
 	return {
 		method,
 		headers: headers({contentType, acceptType, auth}),
+		credentials: 'same-origin',
 		mode: 'cors',
 		cache
 	};
 };
 
 export const reqPostBrace = ({method, params = {}, contentType='application/json', acceptType, auth=true}:ReqBrace) => {
-		return {
-				method,
-				headers: headers({contentType, acceptType, auth}),
-				mode: 'cors',
-				cache: 'default',
-				body: contentType === 'application/json' ? typeof params === 'object' ? JSON.stringify(params) : params : params
-		};
+	return {
+		method,
+		headers: headers({contentType, acceptType, auth}),
+		credentials: 'same-origin',
+		mode: 'cors',
+		cache: 'no-cache',
+		body: contentType === 'application/json' ? typeof params === 'object' ? JSON.stringify(params) : params : params
+	};
 };
 
+export interface CustomPromise extends Promise<any>{
+	abort: Function
+}
+
 export const promise = (url:string, options = {}, type?:string) => {
-		// const req = new Request(url, options);
-		return new Promise<any>((resolve, reject) => {
-				fetch(url, options).then((res) => {
-						const status = res.status;
-						if (status === 401) {
-								const pathname = window.location.pathname;
-								pathname === '/login' || (window.location.href = '/login?redirectUrl='+window.location.href);
-						}
-						resolve(type === 'json' ? res.json() : res);
-				}).catch((err) => {
-						reject(err);
-				});
+	const controller = new AbortController();
+	const signal = controller.signal;
+	const _promise: any = new Promise<any>((resolve, reject) => {
+		fetch(url, {...options, signal}).then((res) => {
+			const status = res.status;
+			if(res.ok){
+				if(window.fetchInterceptor){
+					window.fetchInterceptor(res, type).then((fetchInterceptorRes) => {
+						resolve(fetchInterceptorRes);
+					});
+				}else{
+					resolve(type === 'json' ? res.json() : res);
+				}
+			}else{
+				if (status === 401 || status === 403) {
+					const publicPath = getPublicPathWithoutStartAndEndForwardSlash();
+					const scope = publicPath ? '/' + publicPath : '';
+					const pathname = window.location.pathname;
+					pathname === scope + '/login' || (window.location.href = scope + '/login?redirectUrl=' + window.location.href);
+				} else{
+					resolve(type === 'json' ? {status} : res);
+				}
+			}
+		}).catch((err) => {
+			reject(err);
 		});
+	});
+	_promise.abort = () => {
+		controller.abort();
+	};
+	const customPromise: CustomPromise = _promise;
+	return customPromise;
 };

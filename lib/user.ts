@@ -30,7 +30,7 @@ const goToLogin = (history:{push: Function}, location:object) => {
   });
 };
 
-const saveUser = (value:object, rememberTime:number) => {
+const saveUser = (value:object, rememberTime?:number) => {
   const opt = rememberTime ? {...baseOption,
     maxAge: rememberTime,
     expires: new Date(new Date().getTime() + rememberTime * 1000)

@@ -8,3 +8,7 @@ export const check = (value: string) => {
   }
   return false;
 };
+
+export const checkTargetLocale = (value: string, locale = "CN") => {
+  return phones[locale].test(value);
+};

@@ -6,7 +6,8 @@
     "noEmit": false
   },
   "include": [
-    "./lib/**/*"
+    "./lib/**/*",
+    "node_modules/@types/node/globals.d.ts"
   ],
   "exclude": [
     "./lib/user.ts"
