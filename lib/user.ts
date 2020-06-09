@@ -7,12 +7,8 @@ const baseOption = {
   path: '/'
 };
 
-const loginUser = () => {
-  return cookie.load('current-user');
-};
-
 const isLogin = () => {
-  const user = loginUser();
+  const user = getUser();
   return typeof user === 'object';
 };
 
@@ -39,7 +35,12 @@ const saveUser = (value:object, rememberTime?:number) => {
 };
 
 const removeUser = () => {
-  cookie.remove('current-user');
+  saveUser({}, -1);
+  // cookie.remove('current-user');
 };
 
-export { loginUser, isLogin, logout, goToLogin, saveUser, removeUser };
+const getUser = () => {
+  return cookie.load('current-user');
+}
+
+export { getUser, isLogin, logout, goToLogin, saveUser, removeUser };

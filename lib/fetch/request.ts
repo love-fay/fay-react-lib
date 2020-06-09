@@ -2,10 +2,10 @@
  * Created by feichongzheng on 17/1/5.
  */
 import {getPublicPathWithoutStartAndEndForwardSlash} from '../publicPath';
-import {loginUser} from '../user';
+import {getUser} from '../user';
 
 const authorization = () => {
-	const user = loginUser();
+	const user = getUser();
 	const Authorization = {token: user ? user.token:''};
 	return JSON.stringify(Authorization);
 };
@@ -71,8 +71,14 @@ export interface CustomPromise extends Promise<any>{
 }
 
 export const promise = (url:string, options = {}, type?:string) => {
-	const controller = new AbortController();
-	const signal = controller.signal;
+  let controller: AbortController | undefined;
+  let signal: AbortSignal|undefined = undefined;
+  try {
+    controller = new AbortController();
+    signal = controller.signal;
+  } catch (error) {
+    controller = undefined;
+  }
 	const _promise: any = new Promise<any>((resolve, reject) => {
 		fetch(url, {...options, signal}).then((res) => {
 			const status = res.status;
@@ -89,7 +95,7 @@ export const promise = (url:string, options = {}, type?:string) => {
 					const publicPath = getPublicPathWithoutStartAndEndForwardSlash();
 					const scope = publicPath ? '/' + publicPath : '';
 					const pathname = window.location.pathname;
-					pathname === scope + '/login' || (window.location.href = scope + '/login?redirectUrl=' + window.location.href);
+					pathname === scope + '/login' || (window.location.href = scope + '/login?redirectUrl=' + encodeURIComponent(window.location.href));
 				} else{
 					resolve(type === 'json' ? {status} : res);
 				}
@@ -99,7 +105,11 @@ export const promise = (url:string, options = {}, type?:string) => {
 		});
 	});
 	_promise.abort = () => {
-		controller.abort();
+    if(controller){
+      controller.abort();
+    }else{
+      console.error('can not support AbortController');
+    }
 	};
 	const customPromise: CustomPromise = _promise;
 	return customPromise;
